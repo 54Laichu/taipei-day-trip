@@ -82,3 +82,25 @@ def get_attraction(attraction_id: int):
         cursor.close()
         db.close()
         return JSONResponse(status_code=500, content={"error": True, "message": str(e)})
+
+@app.get("/api/mrts")
+async def get_mrts():
+    try:
+        db = get_db_connection()
+        cursor = db.cursor()
+        cursor.execute("""
+        SELECT mrt
+        FROM attractions
+        GROUP BY mrt
+        ORDER BY COUNT(*) DESC
+        """)
+        mrt_list = cursor.fetchall()
+        cursor.close()
+        db.close()
+        return {"data": mrt_list}
+
+    except Exception as e:
+        cursor.close()
+        db.close()
+        return JSONResponse(status_code=500, content={"error": True, "message": str(e)})
+
