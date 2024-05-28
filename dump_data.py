@@ -1,18 +1,8 @@
-import os
 import json
-import mysql.connector
-from dotenv import load_dotenv
-
-# 載入環境變數
-load_dotenv()
+from db_connect import get_db_connection
 
 # 建立資料庫連線
-db = mysql.connector.connect(
-    host=os.environ['DB_HOST'],
-    user=os.environ['DB_USER'],
-    password=os.environ['DB_PASSWORD'],
-    database=os.environ['DB_NAME']
-)
+db = get_db_connection()
 cursor = db.cursor()
 
 # 如果還沒有 attractions table，就建立一個
