@@ -44,7 +44,7 @@ async def get_attractions(page: int = Query(0, ge=0), keyword: Optional[str] = N
         cursor.execute("SELECT COUNT(*) as total FROM attractions")
         total_records = cursor.fetchone()["total"]
         total_pages = (total_records + limit - 1) // limit
-        next_page = page + 1 if (page + 1) * limit < total_records else None
+        next_page = page + 1 if len(attractions) == limit and page + 1 < total_pages else None
 
         cursor.close()
         db.close()
@@ -94,9 +94,12 @@ async def get_mrts():
         GROUP BY mrt
         ORDER BY COUNT(*) DESC
         """)
-        mrt_list = cursor.fetchall()
+        mrt_tuple = cursor.fetchall()
         cursor.close()
         db.close()
+
+        mrt_list = [mrt[0] for mrt in mrt_tuple if mrt[0] is not None]
+        print(mrt_list)
         return {"data": mrt_list}
 
     except Exception as e:
