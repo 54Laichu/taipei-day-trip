@@ -1,0 +1,169 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #f1f1f1;
+  z-index: 999;
+}
+
+.header-container {
+  max-width: 1200px;
+  height: 54px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+}
+
+.logo-font {
+  font-size: 30px;
+  font-family: Noto Sans TC;
+  font-weight: bold;
+  color: #448899;
+}
+
+.menu {
+  margin-left: auto;
+}
+
+.banner {
+  background-image: url("/static/img/banner101.png");
+  background-size: cover;
+  background-position: center top;
+  width: 100%;
+  height: 320px;
+  display: flex;
+  align-items: center; /* Vertically center the banner-container */
+}
+
+.banner-container {
+  max-width: 1200px;
+  flex-direction: column;
+  display: flex;
+  margin: 0 auto;
+  width: 100%; /* Ensures the banner-container stretches across the banner width */
+}
+
+.sub-title p {
+  font-size: 28px;
+  font-family: Noto Sans TC;
+  font-weight: bold;
+  color: #fff;
+  margin: 0;
+}
+
+.slogan {
+  font-size: 16px;
+  font-family: Noto Sans TC;
+  font-weight: bold;
+  color: #fff;
+}
+
+.search-container {
+  display: flex;
+  width: 100%;
+  height: 46px;
+  max-width: 460px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  overflow: hidden;
+  align-items: center;
+}
+
+.search {
+  flex: 1;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+}
+
+.search-input {
+  padding: 10px;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.search-button {
+  width: 20%; /* Ensuring the button takes up 20% */
+  background-color: #448899;
+  border: none;
+  height: 100%;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-button i {
+  font-size: 16px;
+}
+
+.search-button:hover {
+  background-color: #448800;
+}
+
+section {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.attractions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: start;
+}
+
+.attraction-card {
+  width: 22.5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 14px;
+  border: #666;
+  border-style: solid;
+  border-width: 0.1px;
+  border-radius: 5px;
+}
+
+.attraction-image {
+  max-width: 270px;
+  height: 197px;
+  overflow: hidden;
+  position: relative;
+}
+
+.attraction-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.attraction-name {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  font-size: 16px;
+  font-family: Noto Sans TC;
+  font-weight: bold;
+  box-sizing: border-box;
+}
+
+.attraction-name p {
+  margin: 0;
+  padding: 10px;
+}
+
+.attraction-info {
+  max-width: 270px;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
