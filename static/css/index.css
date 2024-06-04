@@ -33,7 +33,7 @@
   width: 100%;
   height: 320px;
   display: flex;
-  align-items: center; /* Vertically center the banner-container */
+  align-items: center;
 }
 
 .banner-container {
@@ -41,7 +41,7 @@
   flex-direction: column;
   display: flex;
   margin: 0 auto;
-  width: 100%; /* Ensures the banner-container stretches across the banner width */
+  width: 100%;
 }
 
 .sub-title p {
@@ -88,7 +88,7 @@
 }
 
 .search-button {
-  width: 20%; /* Ensuring the button takes up 20% */
+  width: 20%;
   background-color: #448899;
   border: none;
   height: 100%;
@@ -114,7 +114,7 @@ section {
 .attractions {
   display: flex;
   flex-wrap: wrap;
-  justify-content: start;
+  justify-content: center;
 }
 
 .attraction-card {
@@ -161,9 +161,85 @@ section {
 }
 
 .attraction-info {
-  max-width: 270px;
   display: flex;
-  width: 100%;
+  max-width: 100%;
   justify-content: space-between;
   align-items: center;
+  margin: 10px;
+  color: #757575;
+}
+
+
+.mrts {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin: 20px 10px;
+}
+
+.scroll-btn {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #888;
+}
+
+.scroll-btn.left {
+  position: absolute;
+  left: 0;
+  z-index: 1;
+}
+
+.scroll-btn.right {
+  position: absolute;
+  right: 0;
+  z-index: 1;
+}
+
+.scroll-btn img {
+  width: 24px;  /* 設置圖標的寬度 */
+  height: 24px; /* 設置圖標的高度 */
+  vertical-align: middle; /* 垂直居中對齊 */
+  border-radius: 100%;
+  border: 1px solid #888;
+}
+
+.mrt-list-container {
+  overflow-x: scroll;
+  display: flex;
+  align-items: center;
+  width: 90%;
+  scroll-behavior: smooth;
+}
+
+.mrt-list-container::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+.mrt-list {
+  display: flex;
+  align-items: center;
+}
+
+.mrt-list p {
+  margin: 0 15px;
+  white-space: nowrap;
+  font-family: Noto Sans TC;
+  font-size: 18px;
+  color: #333;
+}
+
+footer {
+  width: 100%;
+  height: 104px;
+  background-color: #757575;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Noto Sans TC;
+  font-size: 18px;
 }
