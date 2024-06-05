@@ -32,14 +32,15 @@ function createAttractionCard(attraction, container) {
 
 function loadNextPage(url, container, queryString = '') {
   let currentPage = 0;
+  let nextPage = 0;
   let isLoading = false;
 
   function load() {
-    if (isLoading) return;
+    if (isLoading || nextPage === null) return;
 
     isLoading = true;
 
-    fetch(`${url}?page=${currentPage}&${queryString}`)
+    fetch(`${url}?page=${nextPage}&${queryString}`)
       .then(response => response.json())
       .then(data => {
         if (data && data.data.length > 0) {
@@ -47,6 +48,7 @@ function loadNextPage(url, container, queryString = '') {
             createAttractionCard(attraction, container);
           });
 
+          nextPage = data.nextPage;
           currentPage++;
         }
 
@@ -59,9 +61,11 @@ function loadNextPage(url, container, queryString = '') {
   }
 
   window.addEventListener('scroll', () => {
-    const { scrollTop, clientHeight, scrollHeight } = document.documentElement;
+    const bottomElement = document.querySelector('.bottom');
+    const bottomPosition = bottomElement.getBoundingClientRect().top;
+    const windowHeight = window.innerHeight;
 
-    if (scrollTop + clientHeight >= scrollHeight - 100) {
+    if (bottomPosition - windowHeight <= 0) {
       load();
     }
   });
