@@ -1,10 +1,11 @@
-.header {
+.navbar {
+  margin: 0 auto;
+  z-index: 1000;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   background-color: #f1f1f1;
-  z-index: 999;
 }
 
 .header-container {
@@ -34,6 +35,7 @@
   height: 320px;
   display: flex;
   align-items: center;
+  margin-top: 54px;
 }
 
 .banner-container {
@@ -127,13 +129,17 @@ section {
   border-style: solid;
   border-width: 0.1px;
   border-radius: 5px;
+  overflow: hidden;
 }
 
 .attraction-image {
-  max-width: 270px;
+  width: 100%;
   height: 197px;
   overflow: hidden;
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .attraction-image img {
@@ -187,21 +193,17 @@ section {
 }
 
 .scroll-btn.left {
-  position: absolute;
   left: 0;
-  z-index: 1;
 }
 
 .scroll-btn.right {
-  position: absolute;
   right: 0;
-  z-index: 1;
 }
 
 .scroll-btn img {
-  width: 24px;  /* 設置圖標的寬度 */
-  height: 24px; /* 設置圖標的高度 */
-  vertical-align: middle; /* 垂直居中對齊 */
+  width: 24px;
+  height: 24px;
+  vertical-align: middle;
   border-radius: 100%;
   border: 1px solid #888;
 }
@@ -230,6 +232,7 @@ section {
   font-family: Noto Sans TC;
   font-size: 18px;
   color: #333;
+  cursor: pointer;
 }
 
 footer {
@@ -242,4 +245,33 @@ footer {
   justify-content: center;
   font-family: Noto Sans TC;
   font-size: 18px;
+}
+
+
+/* Media queries */
+@media (max-width: 1200px) and (min-width: 601px) {
+  .attraction-card {
+    width: 30%;
+  }
+  .banner-container {
+    max-width: 80%;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .attraction-card {
+    width: 322px;
+    height: 280px;
+  }
+
+  .attraction-image {
+    width: 100%;
+    height: 100%;
+  }
+
+  .banner-container {
+    max-width: 90%;
+    margin: 0 auto;
+  }
 }
