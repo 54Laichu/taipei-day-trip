@@ -179,7 +179,7 @@ section {
 .mrts {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   position: relative;
   margin: 20px 10px;
 }
@@ -212,7 +212,7 @@ section {
   overflow-x: scroll;
   display: flex;
   align-items: center;
-  width: 90%;
+  width: 92.5%;
   scroll-behavior: smooth;
 }
 
@@ -223,7 +223,6 @@ section {
 
 .mrt-list {
   display: flex;
-  align-items: center;
 }
 
 .mrt-list p {
