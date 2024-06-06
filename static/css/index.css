@@ -23,8 +23,18 @@
   color: #448899;
 }
 
-.menu {
+.header-buttons-container {
   margin-left: auto;
+  display: flex;
+  align-items: center;
+}
+
+.header-button p {
+  font-size: 16px;
+  font-family: Noto Sans TC;
+  color: #666666;
+  margin-left: 16px;
+  cursor: pointer;
 }
 
 .banner {
@@ -125,8 +135,6 @@ section {
   flex-direction: column;
   justify-content: center;
   margin: 14px;
-  border: #666;
-  border-style: solid;
   border-width: 0.1px;
   border-radius: 5px;
   overflow: hidden;
@@ -201,11 +209,11 @@ section {
 }
 
 .scroll-btn img {
-  width: 24px;
-  height: 24px;
+  width: 32px;
+  height: 32px;
   vertical-align: middle;
   border-radius: 100%;
-  border: 1px solid #888;
+  border: 1px solid #666666;
 }
 
 .mrt-list-container {
@@ -229,8 +237,8 @@ section {
   margin: 0 15px;
   white-space: nowrap;
   font-family: Noto Sans TC;
-  font-size: 18px;
-  color: #333;
+  font-size: 16px;
+  color: #666666;
   cursor: pointer;
 }
 
