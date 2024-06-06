@@ -1,4 +1,4 @@
-import { createAttractionCard, loadNextPage } from './loadAttractions.js';
+import { createAttractionCard, loadNextPage, resetLoading } from './loadAttractions.js';
 
 function scrollMRT() {
   const mrtList = document.querySelector('.mrt-list');
@@ -25,6 +25,7 @@ function scrollMRT() {
             const mrt = event.target.textContent;
             if (mrt) {
               attractionsContainer.innerHTML = '';
+              resetLoading();
               loadNextPage(`/api/attractions`, attractionsContainer, `keyword=${encodeURIComponent(mrt)}`);
             }
           });
