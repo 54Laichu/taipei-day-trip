@@ -1,0 +1,286 @@
+.navbar {
+  margin: 0 auto;
+  z-index: 1000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #f1f1f1;
+}
+
+.header-container {
+  max-width: 1200px;
+  height: 54px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+}
+
+.logo-font {
+  font-size: 30px;
+  font-family: Noto Sans TC;
+  font-weight: bold;
+  color: #448899;
+}
+
+.header-buttons-container {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+}
+
+.header-button p {
+  font-size: 16px;
+  font-family: Noto Sans TC;
+  color: #666666;
+  margin-left: 16px;
+  cursor: pointer;
+}
+
+.banner {
+  background-image: url("/static/img/banner101.png");
+  background-size: cover;
+  background-position: center top;
+  width: 100%;
+  height: 320px;
+  display: flex;
+  align-items: center;
+  margin-top: 54px;
+}
+
+.banner-container {
+  max-width: 1200px;
+  flex-direction: column;
+  display: flex;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.sub-title p {
+  font-size: 28px;
+  font-family: Noto Sans TC;
+  font-weight: bold;
+  color: #fff;
+  margin: 0;
+}
+
+.slogan {
+  font-size: 16px;
+  font-family: Noto Sans TC;
+  font-weight: bold;
+  color: #fff;
+}
+
+.search-container {
+  display: flex;
+  width: 100%;
+  height: 46px;
+  max-width: 460px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  overflow: hidden;
+  align-items: center;
+}
+
+.search {
+  flex: 1;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+}
+
+.search-input {
+  padding: 10px;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.search-button {
+  width: 20%;
+  background-color: #448899;
+  border: none;
+  height: 100%;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-button i {
+  font-size: 16px;
+}
+
+.search-button:hover {
+  background-color: #448800;
+}
+
+section {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.attractions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.attraction-card {
+  width: 22.5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 14px;
+  border: #E8E8E8  ;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.attraction-image {
+  width: 100%;
+  height: 197px;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.attraction-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.attraction-name {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  font-size: 16px;
+  font-family: Noto Sans TC;
+  font-weight: bold;
+  box-sizing: border-box;
+}
+
+.attraction-name p {
+  margin: 0;
+  padding: 10px;
+}
+
+.attraction-info {
+  display: flex;
+  max-width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px;
+  color: #757575;
+}
+
+
+.mrts {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  margin: 20px 10px;
+}
+
+.scroll-btn {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #888;
+}
+
+.scroll-btn.left {
+  left: 0;
+}
+
+.scroll-btn.right {
+  right: 0;
+}
+
+.scroll-btn img {
+  width: 32px;
+  height: 32px;
+  vertical-align: middle;
+  border-radius: 100%;
+  border: 1px solid #666666;
+}
+
+.mrt-list-container {
+  overflow-x: scroll;
+  display: flex;
+  align-items: center;
+  width: 92.5%;
+  scroll-behavior: smooth;
+}
+
+.mrt-list-container::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+.mrt-list {
+  display: flex;
+}
+
+.mrt-list p {
+  margin: 0 15px;
+  white-space: nowrap;
+  font-family: Noto Sans TC;
+  font-size: 16px;
+  color: #666666;
+  cursor: pointer;
+}
+
+footer {
+  width: 100%;
+  height: 104px;
+  background-color: #757575;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Noto Sans TC;
+  font-size: 18px;
+}
+
+
+/* Media queries */
+@media (max-width: 1200px) and (min-width: 601px) {
+  .attraction-card {
+    width: 30%;
+  }
+  .banner-container {
+    max-width: 80%;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .attraction-card {
+    width: 322px;
+    height: 280px;
+  }
+
+  .attraction-image {
+    width: 100%;
+    height: 100%;
+  }
+
+  .banner-container {
+    max-width: 90%;
+    margin: 0 auto;
+  }
+}
