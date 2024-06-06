@@ -7,5 +7,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // attractions api
   const attractionsContainer = document.querySelector('.attractions');
-  loadNextPage('/api/attractions', attractionsContainer);
+  loadNextPage('/api/attractions', attractionsContainer, '', true);
 });

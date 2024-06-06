@@ -1,4 +1,4 @@
-import { createAttractionCard, loadNextPage } from './loadAttractions.js';
+import { createAttractionCard, loadNextPage, resetLoading } from './loadAttractions.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   const searchInput = document.querySelector('.search-input');
@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
   searchBtn.addEventListener('click', () => {
     const searchValue = searchInput.value;
     if (searchValue) {
+      resetLoading();
       attractionsContainer.innerHTML = '';
       loadNextPage(`/api/attractions`, attractionsContainer, `keyword=${encodeURIComponent(searchValue)}`);
       searchInput.value = '';

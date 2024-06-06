@@ -1,3 +1,6 @@
+let isLoading = false;
+let observer = null;
+
 function createAttractionCard(attraction, container) {
   const card = document.createElement('div');
   card.classList.add('attraction-card');
@@ -30,10 +33,8 @@ function createAttractionCard(attraction, container) {
   card.appendChild(info);
 }
 
-function loadNextPage(url, container, queryString = '') {
-  let currentPage = 0;
+function loadNextPage(url, container, queryString = '', initialLoad = false) {
   let nextPage = 0;
-  let isLoading = false;
 
   function load() {
     if (isLoading || nextPage === null) return;
@@ -49,7 +50,8 @@ function loadNextPage(url, container, queryString = '') {
           });
 
           nextPage = data.nextPage;
-          currentPage++;
+        } else {
+          nextPage = null; // No more pages to load
         }
 
         isLoading = false;
@@ -60,17 +62,33 @@ function loadNextPage(url, container, queryString = '') {
       });
   }
 
-  window.addEventListener('scroll', () => {
-    const bottomElement = document.querySelector('.bottom');
-    const bottomPosition = bottomElement.getBoundingClientRect().top;
-    const windowHeight = window.innerHeight;
+  if (observer) {
+    observer.disconnect();
+  }
 
-    if (bottomPosition - windowHeight <= 0) {
+  observer = new IntersectionObserver((entries) => {
+    if (entries[0].isIntersecting) {
       load();
     }
+  }, {
+    rootMargin: '0px',
+    threshold: 1.0
   });
 
-  load();
+  const bottomElement = document.querySelector('.bottom');
+  observer.observe(bottomElement);
+
+  if (initialLoad) {
+    load();
+  }
 }
 
-export { createAttractionCard, loadNextPage };
+function resetLoading() {
+  isLoading = false;
+  if (observer) {
+    observer.disconnect();
+    observer = null;
+  }
+}
+
+export { createAttractionCard, loadNextPage, resetLoading };
