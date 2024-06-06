@@ -33,7 +33,7 @@ function createAttractionCard(attraction, container) {
   card.appendChild(info);
 }
 
-function loadNextPage(url, container, queryString = '', initialLoad = false) {
+function loadNextPage(url, container, queryString = '') {
   let nextPage = 0;
 
   function load() {
@@ -77,10 +77,6 @@ function loadNextPage(url, container, queryString = '', initialLoad = false) {
 
   const bottomElement = document.querySelector('.bottom');
   observer.observe(bottomElement);
-
-  if (initialLoad) {
-    load();
-  }
 }
 
 function resetLoading() {
