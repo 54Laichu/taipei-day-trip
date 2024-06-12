@@ -31,6 +31,10 @@ function createAttractionCard(attraction, container) {
   info.appendChild(mrt);
   info.appendChild(category);
   card.appendChild(info);
+
+  card.addEventListener('click', () => {
+    window.location.href = `/attraction/${attraction.id}`;
+  });
 }
 
 function loadNextPage(url, container, queryString = '') {
@@ -87,4 +91,4 @@ function resetLoading() {
   }
 }
 
-export { createAttractionCard, loadNextPage, resetLoading };
+export { createAttractionCard, loadNextPage, resetLoading};

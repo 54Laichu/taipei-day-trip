@@ -4,8 +4,88 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Attraction</title>
+  <link rel="stylesheet" href="/static/css/index.css">
+  <script src="https://kit.fontawesome.com/a938d7c12a.js" crossorigin="anonymous"></script>
 </head>
-<body>
-  
+<body style="margin: 0;">
+  <header>
+    <div class="navbar" style="background-color: #fff; border-bottom: 1px solid #ddd">
+      <div class="header-container" style="background-color: #fff">
+        <div class="logo-font">
+          <a href="/static/index.html" style="text-decoration: none; color: inherit;">
+            <p>台北一日遊</p>
+          </a>
+        </div>
+        <div class="header-buttons-container">
+          <div class="header-button"><p>預定行程</p></div>
+          <div class="header-button"><p>登入/註冊</p></div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <section style="margin-top: 54px;">
+    <div class="show-attraction-container">
+      <div class="show-attraction-booking">
+
+        <div class="show-attraction-image-carousel-container">
+          <div class="show-attraction-image-carousel"></div>
+          <button class="attraction-scroll-btn-left"><img src="/static/img/left_arrow.svg" alt="Left Arrow"></button>
+          <button class="attraction-scroll-btn-right"><img src="/static/img/right_arrow.svg" alt="Right Arrow"></button>
+          <div class="carousel-dots"></div>
+        </div>
+
+        <div class="show-attraction-reserve">
+          <div class="show-attraction-info">
+            <div class="show-attraction-name"></div>
+            <div class="show-attraction-category-mrt"></div>
+          </div>
+          <div class="show-attraction-reserve-area">
+            <h1>訂購導覽行程</h1>
+            <h2>以此景點為中心的一日行程，帶您探索城市角落故事</h2>
+            <form action="">
+              <div class="show-attraction-reserve-form">
+                <div><label>選擇日期：</label></div>
+                <div><input type="date"></div>
+              </div>
+              <div class="show-attraction-reserve-time show-attraction-reserve-form">
+                <div><label>選擇時間：</label></div>
+                <div>
+                  <label class="show-attraction-reserve-radio"><input type="radio" name="radio" class="radio" value="2000" />上半天</label>
+                </div>
+                <div>
+                  <label class="show-attraction-reserve-radio"><input type="radio" name="radio" class="radio" value="2500" />下半天</label>
+                </div>
+              </div>
+              <div class="show-attraction-reserve-form">
+                <div><label>導覽費用：</label></div>
+                <div class="show-attraction-reserve-price"></div>
+              </div>
+              <div class="show-attraction-reserve-button">
+                <input type="submit" value="開始預約行程">
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="seperate-line"></div>
+
+      <div class="show-attraction-detail">
+        <div class="show-attraction-description"></div>
+        <div class="show-attraction-address">
+          <p>景點地址：</p>
+        </div>
+        <div class="show-attraction-transport">
+          <p>交通方式：</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer>
+    <div class="footer-container">
+      <p>COPYRIGHT © 2021 台北一日遊</p>
+    </div>
+  </footer>
+  <script type="module" src="/static/js/attraction.js"></script>
 </body>
 </html>
