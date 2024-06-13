@@ -88,4 +88,9 @@ document.addEventListener('DOMContentLoaded', () => {
       showAttractionBooking.querySelector('.show-attraction-reserve-price').textContent = `新台幣${price} 元`
     })
   })
+
+  document.querySelector('#show-attraction-date-input').addEventListener('click', () => {
+    const inputField = document.querySelector('#show-attraction-date-input-field');
+    inputField.showPicker();
+  });
 })

@@ -433,6 +433,34 @@ footer {
   margin-bottom: 15px;
 }
 
+#show-attraction-date-input {
+  width: 193px;
+  display: flex;
+  align-items: center;
+  margin-left: 5px;
+}
+
+#show-attraction-date-input input[type='date'] {
+  border: 0;
+  width: 100%;
+  height: 100%;
+  font-size: 16px;
+  font-family: Noto Sans TC;
+  color: #000;
+  font-weight: bold;
+  padding: 10px;
+  cursor: pointer;
+}
+
+#show-attraction-date-input input[type="date"]::-webkit-calendar-picker-indicator {
+  background: url('../img/calendar_icon.png');
+  background-size: contain;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+
 .show-attraction-reserve-button input {
   width: 154px;
   height: 36px;
@@ -475,6 +503,7 @@ footer {
 .show-attraction-reserve-radio {
   display: flex;
   align-items: center;
+  margin-left: 5px;
   margin-right: 5px;
 }
 
