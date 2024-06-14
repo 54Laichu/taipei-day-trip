@@ -290,7 +290,7 @@ footer {
 /* attraction.html */
 
 .show-attraction-container {
-  margin-top: 94px;
+  margin-top: 95px;
   max-width: 1200px;
 }
 
@@ -433,6 +433,34 @@ footer {
   margin-bottom: 15px;
 }
 
+#show-attraction-date-input {
+  width: 193px;
+  display: flex;
+  align-items: center;
+  margin-left: 5px;
+}
+
+#show-attraction-date-input input[type='date'] {
+  border: 0;
+  width: 100%;
+  height: 100%;
+  font-size: 16px;
+  font-family: Noto Sans TC;
+  color: #000;
+  font-weight: bold;
+  padding: 10px;
+  cursor: pointer;
+}
+
+#show-attraction-date-input input[type="date"]::-webkit-calendar-picker-indicator {
+  background: url('../img/calendar_icon.png');
+  background-size: contain;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+
 .show-attraction-reserve-button input {
   width: 154px;
   height: 36px;
@@ -475,6 +503,7 @@ footer {
 .show-attraction-reserve-radio {
   display: flex;
   align-items: center;
+  margin-left: 5px;
   margin-right: 5px;
 }
 
@@ -497,15 +526,27 @@ footer {
 }
 
 @media (max-width: 600px) {
+  .show-attraction-container {
+    margin-top: 0;
+  }
+
+  .show-attraction-image-carousel-container {
+    position: absolute;
+    width: 100%;
+    height: 350px;
+    overflow: hidden;
+    border-radius: 0;
+  }
+
   .show-attraction-booking {
     flex-direction: column;
     align-items: center;
     height: auto;
   }
 
-  .show-attraction-image-carousel-container,
   .show-attraction-reserve {
     width: 100%;
+    margin-top: 370px;
     margin-bottom: 20px;
     height: auto;
   }
