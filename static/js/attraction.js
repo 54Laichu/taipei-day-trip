@@ -28,9 +28,12 @@ document.addEventListener('DOMContentLoaded', () => {
         let images = attraction.images;
         if (images.length > 0) {
           for (let i = 0; i < images.length; i++) {
+            const slide = document.createElement('div');
+            slide.classList.add('show-attraction-carousel-slide');
             const img = document.createElement('img');
             img.src = images[i];
-            showAttractionImageCarousel.appendChild(img);
+            slide.appendChild(img)
+            showAttractionImageCarousel.appendChild(slide);
 
             const dot = document.createElement('span');
             const carouselDots = showAttractionImageCarouselContainer.querySelector('.carousel-dots');

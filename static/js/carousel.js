@@ -9,20 +9,17 @@ export class Carousel {
     this.totalImages = this.images.childElementCount;
     this.bindScrollEvent();
     this.onResize();
-  window.addEventListener('resize', this.onResize.bind(this));
+    window.addEventListener('resize', this.onResize.bind(this));
   }
 
   bindScrollEvent() {
-    const leftButton = this.container.querySelector('.attraction-scroll-btn-left');
-    const rightButton = this.container.querySelector('.attraction-scroll-btn-right');
-
-    leftButton.addEventListener('click', () => this.scrollPrevious());
-    rightButton.addEventListener('click', () => this.scrollNext());
+    this.leftButton.addEventListener('click', () => this.scrollPrevious());
+    this.rightButton.addEventListener('click', () => this.scrollNext());
   }
 
   onResize() {
-    const containerWidth = this.container.clientWidth;
-    this.images.style.left = `-${this.currentIndex * containerWidth}px`;
+    const imageWidth = this.images.firstChild.clientWidth;
+    this.images.style.left = `-${this.currentIndex * imageWidth}px`;
   }
 
   scrollNext() {
@@ -36,8 +33,8 @@ export class Carousel {
   }
 
   showCurrentIndex(index) {
-    const containerWidth = this.container.clientWidth;
-    this.images.style.left = `-${index * containerWidth}px`;
+    const imageWidth = this.images.firstChild.clientWidth;
+    this.images.style.left = `-${index * imageWidth}px`;
     this.dots.forEach((dot, i) => {
       dot.classList.toggle('active', i === index);
     });

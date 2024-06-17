@@ -1,7 +1,7 @@
 from fastapi import *
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse, JSONResponse
-from typing import List, Optional, Dict
+from typing import List, Optional, Dict, Annotated
 from db_connect import get_db_connection
 app= FastAPI()
 
@@ -23,7 +23,7 @@ async def thankyou(request: Request):
 
 #api
 @app.get("/api/attractions")
-async def get_attractions(page: int = Query(0, ge=0), keyword: Optional[str] = None):
+async def get_attractions(page: Annotated[int, Query(ge=0)] = 0, keyword: Annotated[str | None, Query()] = None):
     db = get_db_connection()
     cursor = db.cursor(dictionary=True)
 
