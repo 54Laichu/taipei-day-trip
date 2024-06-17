@@ -305,7 +305,7 @@ footer {
 
 .show-attraction-image-carousel-container {
   position: relative;
-  width: 48%;
+  width: 540px;
   height: 400px;
   overflow: hidden;
   border-radius: 5px;
@@ -401,7 +401,7 @@ footer {
 .show-attraction-reserve-area {
   max-width: 100%;
   background-color: #e8e8e8;
-  padding: 20px;
+  padding: 15px 20px;
   border-radius: 5px;
   font-size: 16px;
   font-family: Noto Sans TC;
@@ -529,7 +529,7 @@ footer {
   margin: 0;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 760px) {
   .show-attraction-container {
     margin-top: 0;
   }
