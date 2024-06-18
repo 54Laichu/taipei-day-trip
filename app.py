@@ -3,6 +3,12 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse, JSONResponse
 from typing import List, Optional, Dict, Annotated
 from db_connect import get_db_connection
+import bcrypt
+import jwt
+from dotenv import load_dotenv
+import os
+from datetime import datetime, timedelta
+
 app= FastAPI()
 
 app.mount("/static", StaticFiles(directory="static"), name="static")
@@ -62,7 +68,7 @@ async def get_attractions(page: Annotated[int, Query(ge=0)] = 0, keyword: Annota
         return JSONResponse(status_code=500, content={"error": True, "message": str(e)})
 
 @app.get("/api/attraction/{attraction_id}")
-def get_attraction(attraction_id: int):
+async def get_attraction(attraction_id: int):
     if attraction_id <= 0:
         return JSONResponse(status_code=400, content={"error": True, "message": "景點編號不正確"})
 
@@ -110,3 +116,29 @@ async def get_mrts():
         db.close()
         return JSONResponse(status_code=500, content={"error": True, "message": str(e)})
 
+@app.post("/api/user")
+async def create_user(name: Annotated[str, Form()],email: Annotated[str, Form()], password: Annotated[str, Form()]):
+    try:
+        db = get_db_connection()
+        cursor = db.cursor(dictionary=True)
+        cursor.execute("INSERT INTO Users (name, email, password) VALUES (%s, %s, %s)",
+                            (name, email, password))
+        db.commit()
+        cursor.close()
+        db.close()
+        return JSONResponse(status_code = 201, content= {"message": "User created!"})
+    except Exception as e:
+        cursor.close()
+        db.close()
+        return JSONResponse(status_code=500, content={"error": True, "message": str(e)})
+        #註冊會員...
+
+
+@app.get("api/user/auth")
+async def get_user():
+    pass
+ # 取得當前登入會員資訊
+
+@app.put("api/user/auth")
+async def login_user():
+    pass
