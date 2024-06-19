@@ -18,10 +18,25 @@
         </div>
         <div class="header-buttons-container">
           <div class="header-button"><p>預定行程</p></div>
-          <div class="header-button"><p>登入/註冊</p></div>
+          <div class="header-button" id="sign-in-button"><p>登入/註冊</p></div>
         </div>
       </div>
     </div>
+    <div class="sign-in-container">
+      <div class="sign-in">
+        <p>登入會員帳號</p>
+        <div class="sign-in-form">
+          <form id="login-form" method="put" action="/api/user/auth">
+            <div><input type="text" placeholder="輸入電子信箱"></div>
+            <div><input type="password" placeholder="輸入密碼"></div>
+            <div><input type="submit" value="登入帳戶"></div>
+          </form>
+          <a href="#" id="register-btn">還沒有帳戶？點此註冊</a>
+        </div>
+        <div class="close-btn"><img src="/static/img/cross.png" width="16px" height="16px" alt="close-tag"></div>
+      </div>
+    </div>
+    <div id="overlay"></div>
   </header>
   <div class="banner">
     <div class="banner-container">
@@ -58,5 +73,6 @@
   </footer>
   <script type="module" src="/static/js/index.js"></script>
   <script type="module" src="/static/js/search.js"></script>
+  <script type="module" src="/static/js/signIn.js"></script>
 </body>
 </html>

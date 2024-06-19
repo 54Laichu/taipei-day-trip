@@ -11,6 +11,10 @@ from datetime import datetime, timedelta
 
 app= FastAPI()
 
+jwt_secret_key = os.environ['JWT_SECRET_KEY']
+jwt_algorithm = os.environ['JWT_ALGORITHM']
+jwt_expire_days = int(os.environ['JWT_EXPIRE_DAYS'])
+
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
 # Static Pages (Never Modify Code in this Block)
@@ -117,12 +121,14 @@ async def get_mrts():
         return JSONResponse(status_code=500, content={"error": True, "message": str(e)})
 
 @app.post("/api/user")
-async def create_user(name: Annotated[str, Form()],email: Annotated[str, Form()], password: Annotated[str, Form()]):
+async def create_user(name: Annotated[str, Form()], email: Annotated[str, Form()], password: Annotated[str, Form()]):
     try:
+        hashed_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
+
         db = get_db_connection()
         cursor = db.cursor(dictionary=True)
         cursor.execute("INSERT INTO Users (name, email, password) VALUES (%s, %s, %s)",
-                            (name, email, password))
+                        (name, email, hashed_password))
         db.commit()
         cursor.close()
         db.close()
@@ -133,12 +139,32 @@ async def create_user(name: Annotated[str, Form()],email: Annotated[str, Form()]
         return JSONResponse(status_code=500, content={"error": True, "message": str(e)})
         #註冊會員...
 
+@app.put("/api/user/auth")
+async def login_user(email: Annotated[str, Form()], password: Annotated[str,Form()]):
+    try:
+        db = get_db_connection()
+        cursor = db.cursor(dictionary=True)
+        cursor.execute("SELECT * FROM Users WHERE email = %s", (email,))
+        user = cursor.fetchone()
+        cursor.close()
+        db.close()
+        if user and bcrypt.checkpw(password.encode('utf-8'), user['password'].encode('utf-8')):
+            expire_at = datetime.utcnow() + timedelta(days=jwt_expire_days)
+            payload = {
+                "user_id": user["id"],
+                "exp": datetime.utcnow() + timedelta(jwt_expire_days)
+            }
+            token = jwt.encode(payload, jwt_secret_key, algorithm=jwt_algorithm)
+            return {"token": token}
+        else:
+            return JSONResponse(status_code=400, content={"error": True, "message": "帳號或密碼錯誤"})
+    except Exception as e:
+            cursor.close()
+            db.close()
+            return JSONResponse(status_code=500, content={"error": True, "message": str(e)})
 
-@app.get("api/user/auth")
-async def get_user():
-    pass
- # 取得當前登入會員資訊
 
-@app.put("api/user/auth")
-async def login_user():
-    pass
+# @app.get("api/user/auth")
+# async def get_user():
+#     pass
+#  # 取得當前登入會員資訊
