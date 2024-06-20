@@ -140,8 +140,7 @@ document.addEventListener('DOMContentLoaded', function () {
   signInButton.addEventListener('click', () => {
     if (signInButton.textContent.trim() === '登出系統') {
       localStorage.removeItem('token');
-      signInButton.innerHTML = '<p>登入/註冊</p>';
-      showMessage('您已成功登出', 'green');
+      location.reload(true);
     } else {
       signInContainer.style.display = 'block';
       overlay.style.display = 'block';
