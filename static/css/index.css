@@ -598,6 +598,10 @@ footer {
 
 .sign-in-container > div {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .sign-in {
@@ -651,7 +655,7 @@ footer {
   color: #757575;
 }
 
-.sign-in-form input[type=submit] {
+.sign-in-form input[type=button] {
   color: #FFFFFF;
   background-color: #448899;
   padding: 0;
