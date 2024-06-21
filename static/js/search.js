@@ -11,8 +11,15 @@ document.addEventListener('DOMContentLoaded', () => {
       resetLoading();
       attractionsContainer.innerHTML = '';
       loadNextPage(`/api/attractions`, attractionsContainer, `keyword=${encodeURIComponent(searchValue)}`);
+
+      if (attractionsContainer.innerHTML === '') {
+        searchInput.placeholder = '查無結果';
+        console.error('No result found');
+      }
+
       searchInput.value = '';
     } else {
+      searchInput.placeholder = '請在框框輸入景點';
       console.error('Search value is empty');
     }
   });

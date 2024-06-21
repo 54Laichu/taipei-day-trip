@@ -9,8 +9,8 @@
 </head>
 <body style="margin: 0;">
   <header>
-    <div class="navbar" style="background-color: #fff; border-bottom: 1px solid #ddd">
-      <div class="header-container" style="background-color: #fff">
+    <div class="navbar">
+      <div class="header-container">
         <div class="logo-font">
           <a href="/static/index.html" style="text-decoration: none; color: inherit;">
             <p>台北一日遊</p>
@@ -18,10 +18,27 @@
         </div>
         <div class="header-buttons-container">
           <div class="header-button"><p>預定行程</p></div>
-          <div class="header-button"><p>登入/註冊</p></div>
+          <div class="header-button" id="sign-in-button">
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+          </div>
         </div>
       </div>
     </div>
+    <div class="sign-in-container">
+      <div class="sign-in">
+        <p>登入會員帳號</p>
+        <div class="sign-in-form">
+          <form id="login-form">
+            <div><input type="text" name="email" placeholder="輸入電子信箱"></div>
+            <div><input type="password" name="password" placeholder="輸入密碼"></div>
+            <div><input type="button" value="登入帳戶"></div>
+          </form>
+          <a href="#" id="register-btn">還沒有帳戶？點此註冊</a>
+        </div>
+        <div class="close-btn"><img src="/static/img/cross.png" width="16px" height="16px" alt="close-tag"></div>
+      </div>
+    </div>
+    <div id="overlay"></div>
   </header>
   <section style="margin-top: 54px;">
     <div class="show-attraction-container">
@@ -87,5 +104,7 @@
     </div>
   </footer>
   <script type="module" src="/static/js/attraction.js"></script>
+  <script type="module" src="/static/js/signinContainer.js"></script>
+  <script type="module" src="/static/js/userAuth.js"></script>
 </body>
 </html>

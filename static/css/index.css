@@ -1,3 +1,8 @@
+input {
+  border: none;
+  outline: none;
+}
+
 .navbar {
   margin: 0 auto;
   z-index: 1000;
@@ -305,8 +310,8 @@ footer {
 
 .show-attraction-image-carousel-container {
   position: relative;
-  width: 48%;
-  max-height: 100%;
+  width: 540px;
+  height: 400px;
   overflow: hidden;
   border-radius: 5px;
 }
@@ -320,9 +325,13 @@ footer {
   height: 100%;
 }
 
-.show-attraction-image-carousel img {
-  max-width: 100%;
-  max-height: 100%;
+.show-attraction-carousel-slide {
+  min-width: 100%;
+}
+
+.show-attraction-carousel-slide > img {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   flex-shrink: 0;
 }
@@ -397,7 +406,7 @@ footer {
 .show-attraction-reserve-area {
   max-width: 100%;
   background-color: #e8e8e8;
-  padding: 20px;
+  padding: 15px 20px;
   border-radius: 5px;
   font-size: 16px;
   font-family: Noto Sans TC;
@@ -525,14 +534,13 @@ footer {
   margin: 0;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 760px) {
   .show-attraction-container {
     margin-top: 0;
   }
 
   .show-attraction-image-carousel-container {
     position: absolute;
-    width: 100%;
     height: 350px;
     overflow: hidden;
     border-radius: 0;
@@ -562,4 +570,121 @@ footer {
     width: 100%;
     height: auto;
   }
+}
+
+
+/* sign-in */
+
+.sign-in-container {
+  display: none;
+  position: absolute;
+  top: 80px;
+  width: 340px;
+  background-color: #fff;
+  left: 50%;
+  transform: translate(-50%);
+  border-radius: 6px;
+  overflow: hidden;
+  z-index: 1001;
+}
+
+.sign-in-container::before {
+  content: '';
+  display: block;
+  height: 10px;
+  width: 100%;
+  background: linear-gradient(to right, #66AABB, #337788);
+}
+
+.sign-in-container > div {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.sign-in {
+  margin: 15px;
+  width: 310px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.sign-in > p {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Noto Sans TC;
+  color: #666666;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.sign-in-form {
+  min-width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.sign-in-form > form {
+  min-width: 100%;
+  margin: 0;
+}
+
+.sign-in-form div {
+  margin-bottom: 10px;
+  width: 100%;
+  max-height: 47px;
+}
+
+.sign-in-form input {
+  padding: 15px;
+  width: 100%;
+  height: 47px;
+  box-sizing: border-box;
+  border: 1px solid #CCCCCC;
+  background-color: #FFFFFF;
+  border-radius: 5px;
+  font-size: 16px;
+  font-family: Noto Sans TC;
+  color: #757575;
+}
+
+.sign-in-form input[type=button] {
+  color: #FFFFFF;
+  background-color: #448899;
+  padding: 0;
+  border: none;
+}
+
+.sign-in-form > a {
+  text-decoration: none;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Noto Sans TC;
+  color: #666666;
+  font-size: 16px;
+}
+
+.close-btn {
+  position: absolute;
+  right: 2px;
+  top: 2px;
+}
+
+#overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
 }
