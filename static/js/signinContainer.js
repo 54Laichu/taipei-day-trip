@@ -11,9 +11,11 @@ document.addEventListener('DOMContentLoaded', function() {
   const passwordField = loginForm.querySelector("input[type='password']");
 
   // view effects
-  signInButton.addEventListener('click', function() {
-    signInContainer.style.display = 'block';
-    overlay.style.display = 'block';
+  signInButton.addEventListener('click', function () {
+    if (signInButton.textContent.trim() === '登入/註冊') {
+      signInContainer.style.display = 'block';
+      overlay.style.display = 'block';
+    }
   });
 
   overlay.addEventListener('click', function() {

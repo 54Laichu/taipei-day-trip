@@ -68,7 +68,9 @@ document.addEventListener('DOMContentLoaded', function () {
         if (response.status === 200 && result.token) {
           localStorage.setItem('token', result.token);
           showMessage('登入成功', 'green');
-          signInButton.innerHTML = '<p>登出系統</p>';
+          setTimeout(() => {
+            window.location.reload();
+          }, 1000);
         } else {
           showMessage(result.message || '登入失敗');
         }
@@ -99,7 +101,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (response.status === 200 && result.token) {
           localStorage.setItem('token', result.token);
           showMessage('註冊成功', 'green');
-          signInButton.innerHTML = '<p>登出系統</p>';
+          setTimeout(() => {window.location.reload();}, 1000);
         } else {
           showMessage(result.message || '註冊失敗');
         }
@@ -140,10 +142,10 @@ document.addEventListener('DOMContentLoaded', function () {
   signInButton.addEventListener('click', () => {
     if (signInButton.textContent.trim() === '登出系統') {
       localStorage.removeItem('token');
-      location.reload(true);
-    } else {
       signInContainer.style.display = 'block';
       overlay.style.display = 'block';
+      showMessage('您已成功登出', 'green');
+      setTimeout(() => {window.location.reload();}, 1000);
     }
   });
 

@@ -123,7 +123,6 @@ async def get_mrts():
         db.close()
 
         mrt_list = [mrt[0] for mrt in mrt_tuple if mrt[0] is not None]
-        print(mrt_list)
         return {"data": mrt_list}
 
     except Exception as e:
