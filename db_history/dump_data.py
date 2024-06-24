@@ -1,4 +1,5 @@
 import json
+import os
 from db_connect import get_db_connection
 
 # 建立資料庫連線
@@ -24,7 +25,11 @@ cursor.execute("""
 """)
 
 # 讀取 JSON 檔案
-with open("data/taipei-attractions.json", 'r', encoding='utf-8') as file:
+current_dir = os.path.dirname(__file__)
+json_file_path = os.path.join(current_dir, '..', 'data', 'taipei-attractions.json')
+
+
+with open(json_file_path, 'r', encoding='utf-8') as file:
     data = json.load(file)
 
 for item in data['result']['results']:
