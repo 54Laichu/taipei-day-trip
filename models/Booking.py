@@ -38,9 +38,9 @@ class Booking(BaseModel):
 
         try:
             cursor.execute(("""
-                SELECT Attractions.id, Attractions.name, Attractions.address, Attractions.images, Bookings.date, Bookings.time, Bookings.price
+                SELECT attractions.id, attractions.name, attractions.address, attractions.images, Bookings.date, Bookings.time, Bookings.price
                 FROM Bookings
-                INNER JOIN Attractions ON Attractions.id = Bookings.attraction_id
+                INNER JOIN attractions ON attractions.id = Bookings.attraction_id
                 WHERE Bookings.user_id = %s
                 """), (user_id,))
             booking_data = cursor.fetchone()
