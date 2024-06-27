@@ -1,7 +1,7 @@
 from fastapi import FastAPI, Request
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
-from controllers import attractions_controller, mrts_controller, users_controller, user_auth_controller
+from controllers import attractions_controller, mrts_controller, users_controller, user_auth_controller, booking_controller
 
 app = FastAPI()
 
@@ -25,3 +25,4 @@ app.include_router(attractions_controller.router, prefix="/api", tags=["attracti
 app.include_router(mrts_controller.router, prefix="/api", tags=["mrt"])
 app.include_router(users_controller.router, prefix="/api", tags=["user"])
 app.include_router(user_auth_controller.router, prefix="/api", tags=["user_auth"])
+app.include_router(booking_controller.router, prefix="/api", tags=["booking"])

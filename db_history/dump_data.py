@@ -8,7 +8,7 @@ cursor = db.cursor()
 
 # 如果還沒有 attractions table，就建立一個
 cursor.execute("""
-    CREATE TABLE IF NOT EXISTS attractions (
+    CREATE TABLE IF NOT EXISTS Attractions (
         id INT AUTO_INCREMENT PRIMARY KEY,
         name VARCHAR(255),
         category VARCHAR(255),
@@ -49,7 +49,7 @@ for item in data['result']['results']:
 
     # 插入資料到資料庫
     cursor.execute("""
-        INSERT INTO attractions (name, category, description, address, transport, mrt, latitude, longitude, images)
+        INSERT INTO Attractions (name, category, description, address, transport, mrt, latitude, longitude, images)
         VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)
     """, (name, category, description, address, transport, mrt, latitude, longitude, images_str))
 

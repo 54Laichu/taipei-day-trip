@@ -1,11 +1,12 @@
 from fastapi import APIRouter, Query
 from fastapi.responses import JSONResponse
 from models.Attraction import Attraction
+from typing import Annotated
 
 router = APIRouter()
 
 @router.get("/attractions/")
-async def index(page: int = Query(ge=0, default=0), keyword: str | None = None):
+async def index(page: Annotated[int, Query(ge=0)] = 0, keyword: Annotated[str | None, Query()] = None):
     try:
         result = Attraction.all(page, keyword)
         return result

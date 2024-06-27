@@ -20,21 +20,28 @@ class User(BaseModel):
         hashed_password = bcrypt.hashpw(user.password.encode('utf-8'), bcrypt.gensalt())
         db = get_db_connection()
         cursor = db.cursor(dictionary=True)
-        cursor.execute("INSERT INTO Users (name, email, password) VALUES (%s, %s, %s)",
-                        (user.name, user.email, hashed_password))
-        db.commit()
 
-        cursor.execute("SELECT id FROM Users WHERE email = %s", (user.email,))
-        user_data = cursor.fetchone()
-        cursor.close()
-        db.close()
+        try:
+            cursor.execute("INSERT INTO Users (name, email, password) VALUES (%s, %s, %s)",
+                            (user.name, user.email, hashed_password))
+            db.commit()
 
-        payload = {
-            "user_id": user_data['id'],
-            "exp": datetime.utcnow() + timedelta(days=jwt_expire_days)
-        }
-        token = jwt.encode(payload, jwt_secret_key, algorithm=jwt_algorithm)
-        return JSONResponse(status_code=200, content={"token": token})
+            cursor.execute("SELECT id FROM Users WHERE email = %s", (user.email,))
+            user_data = cursor.fetchone()
+
+
+            payload = {
+                "user_id": user_data['id'],
+                "exp": datetime.utcnow() + timedelta(days=jwt_expire_days)
+            }
+            token = jwt.encode(payload, jwt_secret_key, algorithm=jwt_algorithm)
+            return JSONResponse(status_code=200, content={"token": token})
+        except Exception as e:
+            db.rollback()
+            return JSONResponse(status_code=500, content={"error": True, "message": str(e)})
+        finally:
+            cursor.close()
+            db.close()
 
 class UserAuth(BaseModel):
     email: str
@@ -59,17 +66,16 @@ class UserAuth(BaseModel):
             return JSONResponse(status_code=400, content={"error": True, "message": "帳號或密碼錯誤"})
 
     @staticmethod
-    def check_jwt(request):
-        auth_header = request.headers.get("Authorization")
+    def check_jwt(auth_header: str):
         if auth_header is None or not auth_header.startswith("Bearer "):
-            return JSONResponse(status_code=200, content=None)
+            return None
 
         token = auth_header.split(" ")[1]
         payload = jwt.decode(token, jwt_secret_key, algorithms=[jwt_algorithm])
 
         user_id = payload.get("user_id")
         if user_id is None:
-            return JSONResponse(status_code=200, content=None)
+            return None
 
         db = get_db_connection()
         cursor = db.cursor(dictionary=True)
@@ -79,6 +85,8 @@ class UserAuth(BaseModel):
         db.close()
 
         if user is None:
-            return JSONResponse(status_code=200, content=None)
+            return None
 
-        return JSONResponse(status_code=200, content={"data": user})
+        return user
+
+

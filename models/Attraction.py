@@ -6,7 +6,7 @@ class Attraction:
         db = get_db_connection()
         cursor = db.cursor(dictionary=True)
 
-        query = "SELECT * FROM attractions"
+        query = "SELECT * FROM Attractions"
         params = []
 
         if keyword:
@@ -22,7 +22,7 @@ class Attraction:
         cursor.execute(query, tuple(params))
         attractions = cursor.fetchall()
 
-        cursor.execute("SELECT COUNT(*) as total FROM attractions")
+        cursor.execute("SELECT COUNT(*) as total FROM Attractions")
         total_records = cursor.fetchone()["total"]
         total_pages = (total_records + limit - 1) // limit
         next_page = page + 1 if len(attractions) == limit and page + 1 < total_pages else None
@@ -39,7 +39,7 @@ class Attraction:
     def find(attraction_id):
         db = get_db_connection()
         cursor = db.cursor(dictionary=True)
-        cursor.execute("SELECT * FROM attractions WHERE id = %s", (attraction_id,))
+        cursor.execute("SELECT * FROM Attractions WHERE id = %s", (attraction_id,))
         attraction = cursor.fetchone()
         cursor.close()
         db.close()
@@ -54,7 +54,7 @@ class Attraction:
         cursor = db.cursor()
         cursor.execute("""
         SELECT mrt
-        FROM attractions
+        FROM Attractions
         GROUP BY mrt
         ORDER BY COUNT(*) DESC
         """)

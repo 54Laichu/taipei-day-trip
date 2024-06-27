@@ -3,9 +3,87 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/static/css/index.css">
   <title>Booking</title>
 </head>
 <body>
-  
+  <header>
+    <div class="navbar">
+      <div class="header-container">
+        <div class="logo-font">
+          <a href="/static/index.html" style="text-decoration: none; color: inherit;">
+            <p>台北一日遊</p>
+          </a>
+        </div>
+        <div class="header-buttons-container">
+          <div class="header-button" id="booking-button"><p>預定行程</p></div>
+          <div class="header-button" id="sign-in-button">
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="sign-in-container">
+      <div class="sign-in">
+        <p>登入會員帳號</p>
+        <div class="sign-in-form">
+          <form id="login-form">
+            <div><input type="text" name="email" placeholder="輸入電子信箱"></div>
+            <div><input type="password" name="password" placeholder="輸入密碼"></div>
+            <div><input type="button" value="登入帳戶"></div>
+          </form>
+          <a href="#" id="register-btn">還沒有帳戶？點此註冊</a>
+        </div>
+        <div class="close-btn"><img src="/static/img/cross.png" width="16px" height="16px" alt="close-tag"></div>
+      </div>
+    </div>
+    <div id="overlay"></div>
+  </header>
+  <section>
+    <div class="booking-username-container"></div>
+  </section>
+  <section id="booking-section-default">
+    <p>目前沒有任何待預訂的行程</p>
+  </section>
+  <section id="booking-section">
+    <div class="booking-attraction-container">
+      <div class="booking-image-container"></div>
+      <div class="booking-info-container">
+        <p>台北一日遊：</p>
+        <p>日期：</p>
+        <p>時間：</p>
+        <p>費用：</p>
+        <p>地點：</p>
+      </div>
+      <div id="booking-delete-btn"><img src="/static/img/delete-btn.png" alt=""></div>
+    </div>
+    <div class="seperate-line"></div>
+    <div class="booking-contact-container">
+      <p>您的聯絡資訊</p>
+      <div><span>聯絡姓名：</span><input type="text" id="booking-contact-name"></div>
+      <div><span>聯絡信箱：</span><input type="text" id="booking-contact-email"></div>
+      <div><span>手機號碼：</span><input type="text"></div>
+      <p>請保持手機暢通，準時到達，導覽人員將用手機與您聯繫，務必留下正確的聯絡方式。</p>
+    </div>
+    <div class="seperate-line"></div>
+    <div class="booking-credict-card-container">
+      <p>信用卡付款資訊</p>
+      <div><span>卡片號碼：</span><input type="text" placeholder="**** **** **** ****"></div>
+      <div><span>過期時間：</span><input type="text" placeholder="MM / YY"></div>
+      <div><span>驗證密碼：</span><input type="text" placeholder="CVV"></div>
+    </div>
+    <div class="seperate-line"></div>
+    <div class="booking-payment-container">
+      <div id="booking-payment-confirm">確認訂購並付款</div>
+    </div>
+  </section>
+  <footer>
+    <div class="footer-container">
+      <p>COPYRIGHT © 2021 台北一日遊</p>
+    </div>
+  </footer>
+  <script type="module" src="/static/js/booking.js"></script>
+  <script type="module" src="/static/js/signinContainer.js"></script>
+  <script type="module" src="/static/js/userAuth.js"></script>
 </body>
 </html>

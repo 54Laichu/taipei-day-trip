@@ -9,6 +9,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const showAttractionAddress = document.querySelector('.show-attraction-address');
   const showAttractionDescription = document.querySelector('.show-attraction-description');
   const showAttractionTransport = document.querySelector('.show-attraction-transport');
+  const showAttractionDateInput = document.querySelector('#show-attraction-date-input');
+  const showAttractionDateInputField = document.querySelector('#show-attraction-date-input-field');
+  const attractionPrice = showAttractionBooking.querySelector('.show-attraction-reserve-price');
+  const bookingBtn = document.querySelector('.show-attraction-reserve-button');
 
   let urlElement = window.location.href.split("/");
   let queryString = urlElement[urlElement.length - 1];
@@ -82,18 +86,66 @@ document.addEventListener('DOMContentLoaded', () => {
         let transportDiv = document.createElement('div');
         transportDiv.textContent = transport;
         showAttractionTransport.appendChild(transportDiv);
+
+        // bookingBtn
+        bookingBtn.addEventListener('click', async (event) => {
+          event.preventDefault();
+          const token = localStorage.getItem('token');
+          if (token) {
+            // console.log(showAttractionDateInputField.value);
+            // console.log("--------");
+            // console.log(attraction.id);
+            if (showAttractionDateInputField.value !== "" && attractionPrice.innerText !== "") {
+              let attractionId = attraction.id;
+              let date = showAttractionDateInputField.value;
+              let time;
+              showAttractionBooking.querySelectorAll('.radio').forEach((radio) => {
+                if (radio.checked) {
+                  time = radio.id;
+                  return;
+                }
+              });
+              let price = (time === "morning") ? 2000 : 2500;
+
+              try {
+                const response = await fetch("/api/booking", {
+                  method: "POST",
+                  headers: {
+                    "Authorization": `Bearer ${token}`,
+                    'Content-Type': 'application/json',
+                  },
+                  body: JSON.stringify({ attractionId, date, time, price }),
+                });
+
+                const result = await response.json();
+                if (response.status === 200 && result.ok) {
+                  window.location.href = '/booking';
+                } else {
+                  console.error('預約失敗');
+                }
+              } catch (e) {
+                console.error(e);
+                alert("帳號驗證失敗");
+              }
+            } else {
+              alert("請填寫完整預約資訊");
+            }
+          } else {
+            alert("請先登入");
+          }
+        });
       }
     })
 
   showAttractionBooking.querySelectorAll('.radio').forEach(radio => {
     radio.addEventListener('click', () => {
       let price = radio.value
-      showAttractionBooking.querySelector('.show-attraction-reserve-price').textContent = `新台幣${price} 元`
+      attractionPrice.textContent = `新台幣${price} 元`
     })
   })
 
-  document.querySelector('#show-attraction-date-input').addEventListener('click', () => {
-    const inputField = document.querySelector('#show-attraction-date-input-field');
-    inputField.showPicker();
+  showAttractionDateInput.addEventListener('click', () => {
+    showAttractionDateInputField.showPicker();
   });
+
 })

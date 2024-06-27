@@ -16,9 +16,10 @@ input {
 .header-container {
   max-width: 1200px;
   height: 54px;
-  margin: 0 auto;
+  margin: 0;
   display: flex;
   align-items: center;
+  padding: 10px;
 }
 
 .logo-font {
@@ -50,7 +51,7 @@ input {
   height: 320px;
   display: flex;
   align-items: center;
-  margin-top: 54px;
+  margin-top: 64px;
 }
 
 .banner-container {
@@ -251,15 +252,23 @@ section {
 }
 
 footer {
+  position: absolute;
   width: 100%;
-  height: 104px;
+  min-height: 104px;
   background-color: #757575;
   color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: Noto Sans TC;
-  font-size: 18px;
+  font-size: 16px;
+  font-weight: 700;
+  padding: 0;
+  margin: 0;
+}
+
+footer p {
+  margin: 40px 0;
 }
 
 
@@ -517,7 +526,7 @@ footer {
 }
 
 .seperate-line {
-  width: 100%;
+  max-width: 100%;
   height: 1px;
   background-color: #e8e8e8;
   margin-top: 40px;
@@ -687,4 +696,187 @@ footer {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 1000;
+}
+
+
+/* booking */
+
+.booking-username-container {
+  margin-top: 104px;
+  margin-left: 90px;
+  margin-right: 90px;
+}
+
+#booking-section > div{
+  margin-left: 100px;
+  margin-right: 100px;
+}
+
+#booking-section-default {
+  display: none;
+  margin-bottom: 40px;
+}
+
+#booking-section-default p {
+  margin-left: 90px;
+  margin-right: 90px;
+  margin-top: 30px;
+  margin-bottom: 0;
+  font-family: Noto Sans TC;
+  font-size: 16px;
+  color: #666666;
+  font-weight: 400;
+}
+
+.booking-username-container,
+.booking-contact-container > p:first-of-type,
+.booking-credict-card-container > p:first-of-type {
+  color: #666666;
+  font-size: 19px;
+  font-family: Noto Sans TC;
+  font-weight: 700;
+}
+
+.booking-attraction-container {
+  margin-top: 30px;
+  margin-left: 10px;
+  margin-right: 10px;
+  display: flex;
+  max-width: 100%;
+  position: relative;
+}
+
+.booking-image-container {
+  width: 250px;
+  height: 200px;
+}
+
+.booking-image-container > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.booking-info-container{
+  margin-left: 30px;
+}
+
+.booking-info-container p {
+  margin-top: 10px;
+  font-family: Noto Sans TC;
+  font-size: 16px;
+  color: #666666;
+  font-weight: 400;
+}
+
+.booking-info-container p:first-of-type {
+  margin-top: 0;
+  margin-bottom: 20px;
+  color: #448899;
+  font-weight: 700;
+}
+
+#booking-delete-btn {
+  position: absolute;
+  right: 0px;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+#booking-delete-btn img {
+  width: 100%;
+}
+
+.booking-contact-container div,
+.booking-credict-card-container div {
+  margin-bottom: 15px;
+  font-family: Noto Sans TC;
+  font-size: 16px;
+  color: #666666;
+  font-weight: 400;
+}
+
+.booking-payment-container > div:first-of-type,
+.booking-contact-container p:last-of-type {
+  color: #666666;
+  font-weight: 700;
+  font-size: 16px;
+  font-family: Noto Sans TC;
+}
+
+#booking-section input {
+  max-width: 200px;
+  max-height: 38px;
+  border: 1px solid;
+  border-color: #E8E8E8;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.booking-payment-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-bottom: 20px;
+}
+
+.booking-payment-container > div:last-of-type {
+  border-radius: 5px;
+  max-width: 173px;
+  max-height: 36px;
+  padding: 10px 20px;
+  background-color: #448899;
+  margin: 22px 0;
+  color: #FFFFFF;
+  font-size: 19px;
+  font-family: Noto Sans TC;
+  font-weight: 400;
+}
+
+@media (max-width: 601px) {
+  .booking-username-container {
+    margin-top: 104px;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  #booking-section > div,
+  #booking-section-default p,
+  .booking-info-container {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .booking-attraction-container {
+    display: block;
+  }
+
+  .booking-image-container {
+    width: 100%;
+    height: 300px;
+    margin-bottom: 30px;
+  }
+
+  .booking-image-container img {
+    width: 100%;
+    height: 100%;
+  }
+
+  #booking-delete-btn {
+    position: static;
+    right: 0px;
+    bottom: 0px;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    margin-left: auto;
+  }
+}
+
+@media (max-width: 400px) {
+  .booking-image-container {
+    height: 200px;
+  }
 }
