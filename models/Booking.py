@@ -18,6 +18,10 @@ class Booking(BaseModel):
 
         try:
             cursor.execute("""
+                DELETE FROM Bookings WHERE user_id = %s
+            """, (booking.user_id,))
+
+            cursor.execute("""
                 INSERT INTO Bookings (user_id, attraction_id, date, time, price)
                 VALUES (%s, %s, %s, %s, %s)""",
                 (booking.user_id, booking.attractionId, booking.date, booking.time, booking.price))

@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
   const userData = JSON.parse(localStorage.getItem('userData'));
   const bookingSection = document.querySelector('#booking-section');
   const bookingSectionDefault = document.querySelector('#booking-section-default');
@@ -19,7 +19,8 @@ document.addEventListener('DOMContentLoaded', () => {
   } else {
     console.error('User data not exist.');
   }
-  const loadBooking = async ()=> {
+
+  const loadBooking = async () => {
     const token = localStorage.getItem('token');
 
     try {
@@ -68,7 +69,10 @@ document.addEventListener('DOMContentLoaded', () => {
           paymentDiv.innerText = `總價：新台幣 ${resultData.price} 元`;
           paymentContainer.prepend(paymentDiv);
 
-          // 呈現訂單畫面
+          // 確認有資料後，顯示 booking-section
+          bookingSection.style.display = 'block';
+          bookingSectionDefault.style.display = 'none';
+          footerContainer.style.height = 'auto';
         } else {
           bookingSection.style.display = 'none';
           bookingSectionDefault.style.display = "block";
@@ -105,5 +109,5 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  loadBooking();
+  await loadBooking();
 });

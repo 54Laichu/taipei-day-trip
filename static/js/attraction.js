@@ -92,9 +92,6 @@ document.addEventListener('DOMContentLoaded', () => {
           event.preventDefault();
           const token = localStorage.getItem('token');
           if (token) {
-            // console.log(showAttractionDateInputField.value);
-            // console.log("--------");
-            // console.log(attraction.id);
             if (showAttractionDateInputField.value !== "" && attractionPrice.innerText !== "") {
               let attractionId = attraction.id;
               let date = showAttractionDateInputField.value;

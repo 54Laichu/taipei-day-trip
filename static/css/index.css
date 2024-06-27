@@ -707,6 +707,10 @@ footer p {
   margin-right: 90px;
 }
 
+#booking-section {
+  display: none;
+}
+
 #booking-section > div{
   margin-left: 100px;
   margin-right: 100px;
