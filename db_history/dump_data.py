@@ -1,4 +1,5 @@
 import json
+import os
 from db_connect import get_db_connection
 
 # 建立資料庫連線
@@ -7,7 +8,7 @@ cursor = db.cursor()
 
 # 如果還沒有 attractions table，就建立一個
 cursor.execute("""
-    CREATE TABLE IF NOT EXISTS attractions (
+    CREATE TABLE IF NOT EXISTS Attractions (
         id INT AUTO_INCREMENT PRIMARY KEY,
         name VARCHAR(255),
         category VARCHAR(255),
@@ -24,7 +25,11 @@ cursor.execute("""
 """)
 
 # 讀取 JSON 檔案
-with open("data/taipei-attractions.json", 'r', encoding='utf-8') as file:
+current_dir = os.path.dirname(__file__)
+json_file_path = os.path.join(current_dir, '..', 'data', 'taipei-attractions.json')
+
+
+with open(json_file_path, 'r', encoding='utf-8') as file:
     data = json.load(file)
 
 for item in data['result']['results']:
@@ -44,7 +49,7 @@ for item in data['result']['results']:
 
     # 插入資料到資料庫
     cursor.execute("""
-        INSERT INTO attractions (name, category, description, address, transport, mrt, latitude, longitude, images)
+        INSERT INTO Attractions (name, category, description, address, transport, mrt, latitude, longitude, images)
         VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)
     """, (name, category, description, address, transport, mrt, latitude, longitude, images_str))
 

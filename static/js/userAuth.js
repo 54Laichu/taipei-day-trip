@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
   const signInButton = document.querySelector('#sign-in-button');
+  const bookingBtn = document.querySelector('#booking-button');
   const signInContainer = document.querySelector('.sign-in-container');
   const overlay = document.querySelector('#overlay');
   const closeBtn = document.querySelector('.close-btn');
@@ -124,17 +125,40 @@ document.addEventListener('DOMContentLoaded', function () {
         });
         const result = await response.json();
         if (response.status === 200 && result.data) {
+          localStorage.setItem('userData', JSON.stringify(result.data));
           signInButton.innerHTML = '<p>登出系統</p>';
-        } else {
+          bookingBtn.addEventListener('click', () => {
+            window.location.href = '/booking';
+          });
+        } else if (!result.data && window.location.pathname == '/booking') {
+          window.location.assign('/');
+        }
+        else {
           localStorage.removeItem('token');
+          localStorage.removeItem('userData');
           signInButton.innerHTML = '<p>登入/註冊</p>';
+
+          bookingBtn.addEventListener('click', () => {
+            signInContainer.style.display = 'block';
+            overlay.style.display = 'block';
+          });
         }
       } catch (error) {
         localStorage.removeItem('token');
+        localStorage.removeItem('userData');
+        window.location.assign('/');
         signInButton.innerHTML = '<p>登入/註冊</p>';
       }
     } else {
-      signInButton.innerHTML = '<p>登入/註冊</p>';
+      if (window.location.pathname == '/booking') {
+        window.location.assign('/');
+      } else {
+        signInButton.innerHTML = '<p>登入/註冊</p>';
+        bookingBtn.addEventListener('click', () => {
+        signInContainer.style.display = 'block';
+        overlay.style.display = 'block';
+      });
+      }
     }
   };
 
@@ -142,10 +166,17 @@ document.addEventListener('DOMContentLoaded', function () {
   signInButton.addEventListener('click', () => {
     if (signInButton.textContent.trim() === '登出系統') {
       localStorage.removeItem('token');
+      localStorage.removeItem('userData');
       signInContainer.style.display = 'block';
       overlay.style.display = 'block';
       showMessage('您已成功登出', 'green');
-      setTimeout(() => {window.location.reload();}, 1000);
+      setTimeout(() => {
+        if (window.location.pathname == '/booking') {
+          window.location.assign('/');
+        } else {
+          window.location.reload();
+        }
+      }, 1000);
     }
   });
 
