@@ -5,6 +5,19 @@ from controllers import attractions_controller, mrts_controller, users_controlle
 
 app = FastAPI()
 
+jwt_secret_key = os.environ['JWT_SECRET_KEY']
+jwt_algorithm = os.environ['JWT_ALGORITHM']
+jwt_expire_days = int(os.environ['JWT_EXPIRE_DAYS'])
+
+class UserCreateRequest(BaseModel):
+    name: str
+    email: str
+    password: str
+
+class UserLoginRequest(BaseModel):
+    email: str
+    password: str
+
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
 # Static Pages (Never Modify Code in this Block)
