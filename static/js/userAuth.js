@@ -124,7 +124,6 @@ document.addEventListener('DOMContentLoaded', function () {
           },
         });
         const result = await response.json();
-
         if (response.status === 200 && result.data) {
           localStorage.setItem('userData', JSON.stringify(result.data));
           signInButton.innerHTML = '<p>登出系統</p>';
