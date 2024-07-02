@@ -734,7 +734,7 @@ footer p {
 
 .booking-username-container,
 .booking-contact-container > p:first-of-type,
-.booking-credict-card-container > p:first-of-type {
+.booking-credit-card-container > p:first-of-type {
   color: #666666;
   font-size: 19px;
   font-family: Noto Sans TC;
@@ -793,7 +793,7 @@ footer p {
 }
 
 .booking-contact-container div,
-.booking-credict-card-container div {
+.booking-credit-card-container div {
   margin-bottom: 15px;
   font-family: Noto Sans TC;
   font-size: 16px;
@@ -883,4 +883,45 @@ footer p {
   .booking-image-container {
     height: 200px;
   }
+}
+
+.tpfield {
+  height: 40px;
+  width: 300px;
+  border: 1px solid #E8E8E8;
+  margin: 5px 0;
+  padding: 5px;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.booking-credit-card-container > div {
+  margin-bottom: 15px;
+}
+
+.booking-credit-card-container {
+  margin-top: 20px;
+}
+
+.booking-credit-card-container p {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+#booking-payment-confirm {
+  border-radius: 5px;
+  max-width: 173px;
+  max-height: 36px;
+  padding: 10px 20px;
+  background-color: #448899;
+  margin: 22px 0;
+  color: #FFFFFF;
+  font-size: 19px;
+  font-family: Noto Sans TC;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+#booking-payment-confirm:hover {
+  background-color: #337788;
 }
