@@ -24,7 +24,7 @@ try:
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
             updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
             FOREIGN KEY (user_id) REFERENCES Users(id),
-            FOREIGN KEY (attraction_id) REFERENCES Attractions(id)
+            FOREIGN KEY (attraction_id) REFERENCES attractions(id)
         )
     """)
     db.commit()
