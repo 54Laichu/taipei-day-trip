@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   const bookingInfos = document.querySelectorAll('div.booking-info-container > p');
   const contactName = document.querySelector('#booking-contact-name');
   const contactEmail = document.querySelector('#booking-contact-email');
+  const contactPhone = document.querySelector('#booking-contact-phone');
   const paymentContainer = document.querySelector('.booking-payment-container');
   const footerContainer = document.querySelector('.footer-container');
   const delBtn = document.querySelector("#booking-delete-btn");
@@ -223,8 +224,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           const responseData = await response.json();
 
           if (response.ok) {
-            console.log('訂單建立成功:', responseData);
-            // window.location.href = `/thankyou?number=${responseData.data.number}`;
+            window.location.href = `/thankyou?number=${responseData.data.number}`;
           } else {
             console.error('訂單建立失敗:', responseData);
             alert('訂單建立失敗: ' + responseData.message);

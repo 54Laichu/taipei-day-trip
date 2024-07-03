@@ -810,7 +810,7 @@ footer p {
 }
 
 #booking-section input {
-  max-width: 200px;
+  width: 200px;
   max-height: 38px;
   border: 1px solid;
   border-color: #E8E8E8;
@@ -837,6 +837,12 @@ footer p {
   font-size: 19px;
   font-family: Noto Sans TC;
   font-weight: 400;
+}
+
+#card-number, #card-expiration-date, #card-ccv {
+  margin: 0;
+  max-height: 38px;
+  width: 200px;
 }
 
 @media (max-width: 601px) {
@@ -897,6 +903,8 @@ footer p {
 
 .booking-credit-card-container > div {
   margin-bottom: 15px;
+  display: flex;
+  align-items: center;
 }
 
 .booking-credit-card-container {
@@ -924,4 +932,12 @@ footer p {
 
 #booking-payment-confirm:hover {
   background-color: #337788;
+}
+
+
+.order-username-container {
+  color: #666666;
+  font-weight: 700;
+  font-size: 16px;
+  font-family: Noto Sans TC;
 }
