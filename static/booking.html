@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/static/css/index.css">
   <title>Booking</title>
+  <script src="https://js.tappaysdk.com/sdk/tpdirect/v5.14.0"></script>
 </head>
 <body>
   <header>
@@ -62,19 +63,19 @@
       <p>您的聯絡資訊</p>
       <div><span>聯絡姓名：</span><input type="text" id="booking-contact-name"></div>
       <div><span>聯絡信箱：</span><input type="text" id="booking-contact-email"></div>
-      <div><span>手機號碼：</span><input type="text"></div>
+      <div><span>手機號碼：</span><input type="text" id="booking-contact-phone"></div>
       <p>請保持手機暢通，準時到達，導覽人員將用手機與您聯繫，務必留下正確的聯絡方式。</p>
     </div>
     <div class="seperate-line"></div>
-    <div class="booking-credict-card-container">
+    <div class="booking-credit-card-container">
       <p>信用卡付款資訊</p>
-      <div><span>卡片號碼：</span><input type="text" placeholder="**** **** **** ****"></div>
-      <div><span>過期時間：</span><input type="text" placeholder="MM / YY"></div>
-      <div><span>驗證密碼：</span><input type="text" placeholder="CVV"></div>
+      <div><span>卡片號碼：</span><div class="tpfield" id="card-number"></div></div>
+      <div><span>過期時間：</span><div class="tpfield" id="card-expiration-date"></div></div>
+      <div><span>驗證密碼：</span><div class="tpfield" id="card-ccv"></div></div>
     </div>
     <div class="seperate-line"></div>
     <div class="booking-payment-container">
-      <div id="booking-payment-confirm">確認訂購並付款</div>
+      <div id="booking-payment-confirm" disabled="true">確認訂購並付款</div>
     </div>
   </section>
   <footer>
