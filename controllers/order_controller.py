@@ -3,6 +3,7 @@ from fastapi.responses import JSONResponse
 from models.User import UserAuth
 from models.Order import Order
 from models.Payment import Payment
+from models.Booking import Booking
 from typing import Annotated
 import requests
 import os
@@ -23,6 +24,7 @@ async def create(auth_header: Annotated[str, Header(alias="Authorization")], ord
         [order_id, order_number] = Order.create(order)
         if not order_id:
             return JSONResponse(status_code=400, content={"error": True, "message": "訂單建立失敗，請洽客服人員"})
+        Booking.destroy(user_id)
 
         #POST TapPay
         tappay_data = {
