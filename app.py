@@ -24,7 +24,7 @@ async def thankyou(request: Request):
 
 @app.get("/api/config")
 async def get_tappay_config():
-    return JSONResponse({"appId": os.environ["APP_ID"], "appKey": os.enviorn["APP_KEY"],})
+    return JSONResponse({"appId": os.environ["TAPPAY_APP_ID"], "appKey": os.environ["TAPPAY_APP_KEY"],})
 
 app.include_router(attractions_controller.router, prefix="/api", tags=["attraction"])
 app.include_router(mrts_controller.router, prefix="/api", tags=["mrt"])

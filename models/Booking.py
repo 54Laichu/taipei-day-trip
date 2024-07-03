@@ -1,7 +1,6 @@
 from pydantic import BaseModel
 from typing import Optional
 import datetime
-from fastapi.responses import JSONResponse
 from db_connect import get_db_connection
 
 class Booking(BaseModel):
